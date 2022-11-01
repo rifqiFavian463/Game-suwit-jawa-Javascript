@@ -1,6 +1,6 @@
-nRandom = Math.floor(Math.random() * 11);
+let nRandom = Math.floor(Math.random() * 11);
 
-batas = 3;
+let batas = 3;
 for (i = 0; i < batas; i++) {
   let inputan = parseInt(prompt("\nMasukkan angka yang akan kamu tebak: "));
 
