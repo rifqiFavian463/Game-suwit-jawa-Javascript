@@ -14,35 +14,30 @@ function getHasil(inputan, comp) {
 }
 
 function putar() {
-  imgKomputer = document.querySelector(".img-komputer");
-  const gambar = ["kelingking", "telunjuk", "jempol"];
+  let arrGambar = ["kelingking", "jempol", "telunjuk"];
   let i = 0;
-  waktuAwal = new Date().getTime();
-  setInterval(function () {
-    if (new Date().getTime() - waktuAwal > 1000) {
-      clearInterval;
+  waktuM = new Date().getTime();
+  setInterval(() => {
+    if (new Date().getTime() - waktuM > 1000) {
+      clearInterval();
       return;
     }
-    imgKomputer.setAttribute("src", "img/" + gambar[i++] + ".png");
-    if (i == gambar.length) {
+    document.querySelector(".img-komputer").setAttribute("src", "img/" + arrGambar[i++] + ".png");
+    if (i == arrGambar.length) {
       i = 0;
     }
   }, 100);
 }
-gambarPlayer = document.querySelectorAll("ul li img");
-gambarPlayer.forEach((gambar) => {
-  gambar.addEventListener("click", function () {
-    pilihanPlayer = gambar.className;
-    pilihanCom = pilihanComputer();
-    hasil = getHasil(pilihanPlayer, pilihanCom);
-    console.log(pilihanCom);
+let pGambar = document.querySelectorAll("ul li img");
+pGambar.forEach((gambar) => {
+  gambar.addEventListener("click", () => {
+    let pilihanP = gambar.className;
+    let pilihanC = pilihanComputer();
     putar();
-    setTimeout(function () {
-      imgKomputer = document.querySelector(".img-komputer");
-      imgKomputer.setAttribute("src", "img/" + pilihanCom + ".png");
-
-      infoHasil = document.querySelector(".info");
-      infoHasil.innerHTML = hasil;
+    Hasil = getHasil(pilihanP, pilihanC);
+    setTimeout(() => {
+      document.querySelector(".info").innerHTML = Hasil;
+      document.querySelector(".img-komputer").setAttribute("src", "img/" + pilihanC + ".png");
     }, 1000);
   });
 });
